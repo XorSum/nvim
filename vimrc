@@ -9,6 +9,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
+Plugin 'Yggdroot/indentLine'
 Plugin 'Raimondi/delimitMate'
 call vundle#end()            " required
 filetype plugin indent on    " required
