@@ -1,3 +1,7 @@
+if &compatible
+  set nocompatible
+endif
+
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -46,6 +50,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'mhinz/vim-startify'
 
 
 " Initialize plugin system
