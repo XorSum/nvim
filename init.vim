@@ -61,7 +61,11 @@ Plug 'jiangmiao/auto-pairs'
 "Plug 'Raimondi/delimitMate' 
 
 " 语言服务器，自动补全，报错提示
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'scalameta/nvim-metals'
+
 
 " 启动界面
 Plug 'mhinz/vim-startify'
