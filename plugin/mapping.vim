@@ -5,7 +5,7 @@ colorscheme molokai
 set background=dark 
 
 set number
-set relativenumber
+" set relativenumber
 set nocompatible
 
 set backspace=indent,eol,start

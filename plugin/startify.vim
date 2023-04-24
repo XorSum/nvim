@@ -1,6 +1,6 @@
 autocmd VimEnter *
             \   if !argc()
             \ |   Startify
-            \ |   NERDTree
+            \ |   NvimTreeToggle 
             \ |   wincmd w
             \ | endif

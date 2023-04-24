@@ -2,10 +2,7 @@ if &compatible
   set nocompatible
 endif
 
-set termguicolors
-lua << EOF
-require("bufferline").setup{}
-EOF
+set encoding=UTF-8 
 
 call plug#begin()
 " The default plugin directory will be as follows:
@@ -30,7 +27,7 @@ call plug#begin()
 " On-demand loading
 " 文件夹浏览功能
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-default branch
@@ -44,7 +41,7 @@ Plug 'scrooloose/nerdtree'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 " 搜索功能
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
 "Plug '~/my-prototype-plugin'
@@ -60,25 +57,36 @@ Plug 'jiangmiao/auto-pairs'
 "也是括号补全，但是不好用
 "Plug 'Raimondi/delimitMate' 
 
-" 语言服务器，自动补全，报错提示
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'scalameta/nvim-metals'
-
 
 " 启动界面
 Plug 'mhinz/vim-startify'
 
 
-Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
-" Plug 'ryanoasis/vim-devicons' Icons without colours
-Plug 'akinsho/bufferline.nvim'
+" Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
+" Plug 'ryanoasis/vim-devicons' " Icons without colours
 
 " 底部的状态栏
-Plug 'Lokaltog/vim-powerline'
+" Plug 'Lokaltog/vim-powerline'
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'nvim-tree/nvim-tree.lua'
+
+Plug 'akinsho/bufferline.nvim'
+
+Plug 'nvim-tree/nvim-web-devicons'
 
 " Initialize plugin system
 call plug#end()
+
+
+set termguicolors
+lua << EOF
+require('lualine').setup()
+require("bufferline").setup{}
+require("nvim-tree").setup()
+require("nvim-web-devicons").setup{}
+EOF
 
 
