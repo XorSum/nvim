@@ -1,8 +1,12 @@
 
 
+require("basic")
 require("plugins")
 
-require("basic")
+require('plugin-config/nvim-tree')
+require('plugin-config/bufferline')
+require('lualine').setup()
+require("nvim-web-devicons").setup{}
 
 
-
+require("keybindings")
