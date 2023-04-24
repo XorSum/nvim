@@ -82,11 +82,14 @@ call plug#end()
 
 
 set termguicolors
+"lua << EOF
+"require('lualine').setup()
+"require("nvim-tree").setup()
+"require("nvim-web-devicons").setup{}
+"EOF
+
 lua << EOF
-require('lualine').setup()
-require("bufferline").setup{}
-require("nvim-tree").setup()
-require("nvim-web-devicons").setup{}
+require("basic") 
 EOF
 
 
