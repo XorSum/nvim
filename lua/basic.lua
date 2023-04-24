@@ -6,8 +6,8 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
--- require('bufferline').setup()
 require("nvim-tree").setup()
-require('plugins/bufferline')
+require('plugin-config/bufferline')
 require('lualine').setup()
 require("nvim-web-devicons").setup{}
+
