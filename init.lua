@@ -10,7 +10,12 @@ vim.o.background = "dark" -- or "light" for light mode
 require('plugin-config/nvim-tree')
 require('plugin-config/bufferline')
 require('lualine').setup()
-require("nvim-web-devicons").setup{}
 require('telescope').setup{}
+require('plugin-config/which-key')
+require("nvim-web-devicons").setup{}
 
 require("keybindings")
+
+
+
+

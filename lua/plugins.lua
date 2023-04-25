@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
   use "nvim-lua/plenary.nvim"
 
   -- 启动界面
+  -- https://alpha2phi.medium.com/neovim-startup-screen-edd933ec8261
   use 'mhinz/vim-startify'
 
   -- 文件搜索
@@ -38,6 +39,24 @@ return require('packer').startup(function(use)
 
   -- 底部的状态栏
   use 'nvim-lualine/lualine.nvim'
+
+
+
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+
 
 
   use 'nvim-tree/nvim-tree.lua'
