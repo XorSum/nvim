@@ -18,6 +18,9 @@ return require('packer').startup(function(use)
 
   -- 配色主题
   use 'tomasr/molokai'
+  use 'folke/tokyonight.nvim'
+
+
   -- 在两个大括号之间加上竖着的线
   use 'Yggdroot/indentLine'
   -- 括号补全
