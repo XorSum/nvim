@@ -57,3 +57,17 @@ https://github.com/fannheyward/coc-rust-analyzer
 :CocInstall coc-rust-analyzer
 ```
 
+### Acknowledgments
+
+* [NeoVIm Lua Guide](https://neovim.io/doc/user/lua-guide.html#lua-guide)
+
+* [学习 Neovim 全 lua 配置](https://zhuanlan.zhihu.com/p/571617696)
+
+* [How do you decide keybindings to use for things?](https://www.reddit.com/r/neovim/comments/sng5jy/how_do_you_decide_keybindings_to_use_for_things/)
+
+* [which-key.nvim mappings](https://gist.github.com/JSchrtke/cabd3e42a6920ef1f0835bd7ae286aad)
+
+* [从零开始配置 Neovim](https://martinlwx.github.io/zh-cn/config-neovim-from-scratch/)
+
+
+

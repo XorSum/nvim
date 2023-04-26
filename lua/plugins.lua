@@ -40,24 +40,8 @@ return require('packer').startup(function(use)
   -- 底部的状态栏
   use 'nvim-lualine/lualine.nvim'
 
-
-
-
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
-
-
-
+  -- 快捷键管理
+  use {"folke/which-key.nvim"}
 
   use 'nvim-tree/nvim-tree.lua'
 
