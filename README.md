@@ -57,6 +57,35 @@ https://github.com/fannheyward/coc-rust-analyzer
 :CocInstall coc-rust-analyzer
 ```
 
+### Roadmap
+
+- [x] organization
+
+- [x] baisc
+
+- [x] plugin manager
+
+- [x] theme
+
+- [x] hotkey mapping
+
+- [x] file explorer
+
+- [x] buffer line
+
+- [x] status line
+
+- [x] startify
+
+- [x] searching
+
+- [ ] session/cache
+
+- [ ] language server ptotocol
+
+- [ ] auto complete
+
+
 ### Acknowledgments
 
 * [NeoVIm Lua Guide](https://neovim.io/doc/user/lua-guide.html#lua-guide)
