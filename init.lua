@@ -10,6 +10,7 @@ require('lualine').setup()
 require('telescope').setup{}
 require('plugin-config/which-key')
 require('startify')
+require('plugin-config/metals')
 require("nvim-web-devicons").setup{}
 
 require("keybindings")
