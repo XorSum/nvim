@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
   -- 在两个大括号之间加上竖着的线
   use 'Yggdroot/indentLine'
   -- 括号补全
-  use 'jiangmiao/auto-pairs' 
+--  use 'jiangmiao/auto-pairs' 
 
 
   use "nvim-lua/plenary.nvim"

@@ -8,10 +8,16 @@ t_ext = require('telescope').extensions
 
 -- Normal mode, no <leader> prefix
 wk.register({
-    ["gd"] = {"<cmd>lua vim.lsp.buf.definition()<CR>", "go to definition"},
+    ["K"] = {"<cmd>lua vim.lsp.buf.hover<CR>", "go to definition"},
+    ["gD"] = {"<cmd>lua vim.lsp.buf.definition()<CR>", "go to definition"},
+    ["gi"] = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "go to implementation"},
+    ["gr"] = {"<cmd>lua vim.lsp.buf.references()<CR>", "go to references"},
+    ["gds"] = {"<cmd>lua vim.lsp.buf.document_symbol()<CR>", "go to document_symbol"},
+    ["gws"] = {"<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", "go to workspace_symbol"},
     ["gt"] = {"next tab"},
     ["gT"] = {"previous tab"},
 })
+
 
 -- Normal mode, <leader> prefix
 wk.register({
@@ -82,7 +88,15 @@ wk.register({
         c = {"<cmd>T clear<CR>", "clear"},
     },
 
+
+
+
+
+
+
 }, { prefix = "<leader>"})
+
+
 
 
 -- 保存本地变量
