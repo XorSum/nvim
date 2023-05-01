@@ -2,10 +2,32 @@
 -- https://www.reddit.com/r/neovim/comments/sng5jy/how_do_you_decide_keybindings_to_use_for_things/
 -- https://gist.github.com/JSchrtke/cabd3e42a6920ef1f0835bd7ae286aad
 
+-- 尽可能使用which-key插件，尽量不要使用nvim_set_keymap进行快捷键映射。
+
+-- 保存本地变量
+local map = vim.api.nvim_set_keymap
+-- local opt = {noremap = true, silent = true }
+local opt = {noremap = true, silent = true }
+
+-- 之后就可以这样映射按键了
+-- map('模式','按键','映射为XX',opt)
+
+map('n', '<SPACE>', '<Nop>', opt)
+-- leader key 设置为 空格
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- 全选复制粘贴
+map('n', '<C-a>', '<esc>ggVG<CR>', opt)
+map('v', '<C-c>', '"+y', opt)
+map('n', '<C-v>', '"+p', opt)
+
+
+-- 下面是which-key插件
+
 local wk = require("which-key")
 t = require('telescope.builtin')
 t_ext = require('telescope').extensions
-
 
 
 -- Normal mode, no <leader> prefix
@@ -95,21 +117,25 @@ wk.register({
         t = {function() t_ext.todo.todo() end, "todos"},
     },
 
-
     -- window
     w = {
         name = "+window",
+        -- 关闭当前窗口    
+        c = { "<cmd>wincmd c<CR>" , "close current window"},
+        -- 关闭其它窗口
+        o = { "<cmd>wincmd o<CR>" , "close other windows"},
+        -- 分割窗口
         h = {"<cmd>vsplit<CR>", "split left"},
         j = {"<cmd>split<bar>wincmd j<CR>", "split down"},
         k = {"<cmd>split<CR>", "split up"},
         l = {"<cmd>vsplit<bar>wincmd l<CR>", "split right"},
-        p = {function() require('nvim-window').pick() end, "pick window"},
-        r = {"<cmd>WinResizerStartResize<CR>", "resize mode"},
-        e = {"<cmd>wincmd =<CR>", "equalize size"},
-        m = { "<cmd>WinShift<CR>", "toggle window move mode"},
-        s = { "<cmd>WinShift swap<CR>", "toggle window swap mode"},
-        z = {"<cmd>ZenMode<CR>", "toggle zen mode"},
         t = {"<cmd>wincmd T<CR>", "breakout into new tab"},
+        -- 改变窗口大小
+        w = {"<cmd>resize +2<CR>", ""},          -- 上
+        a = {"<cmd>vertical resize -2<CR>", ""}, -- 左
+        s = {"<cmd>resize -2<CR>", ""},          -- 下
+        d = {"<cmd>vertical resize +2<CR>", ""}, -- 右
+        e = {"<cmd>wincmd =<CR>", "" },          -- 等比例
     },
 
     -- terminal
@@ -125,50 +151,6 @@ wk.register({
   }
 })
 
-
--- 保存本地变量
-local map = vim.api.nvim_set_keymap
--- local opt = {noremap = true, silent = true }
-local opt = {noremap = true, silent = true }
-
--- 之后就可以这样映射按键了
--- map('模式','按键','映射为XX',opt)
-
-map('n', '<SPACE>', '<Nop>', opt)
--- leader key 设置为 空格
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- 取消 s 默认功能
-map("n", "s", "", opt)
--- windows 分屏快捷键
-map("n", "sv", ":vsp<CR>", opt)
-map("n", "sh", ":sp<CR>", opt)
--- 关闭当前
-map("n", "sc", "<C-w>c", opt)
--- 关闭其他
-map("n", "so", "<C-w>o", opt)
-
-
--- 左右比例控制
-map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
-map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
-map("n", "s,", ":vertical resize -20<CR>", opt)
-map("n", "s.", ":vertical resize +20<CR>", opt)
--- 上下比例
-map("n", "sj", ":resize +10<CR>", opt)
-map("n", "sk", ":resize -10<CR>", opt)
-map("n", "<C-Down>", ":resize +2<CR>", opt)
-map("n", "<C-Up>", ":resize -2<CR>", opt)
--- 等比例
-map("n", "s=", "<C-w>=", opt)
-
-
--- 全选复制粘贴
-
-map('n', '<C-a>', '<esc>ggVG<CR>', opt)
-map('v', '<C-c>', '"+y', opt)
-map('n', '<C-v>', '"+p', opt)
 
 
 
