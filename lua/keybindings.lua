@@ -6,21 +6,26 @@ local wk = require("which-key")
 t = require('telescope.builtin')
 t_ext = require('telescope').extensions
 
+
+
 -- Normal mode, no <leader> prefix
 wk.register({
-    ["K"] = {"<cmd>lua vim.lsp.buf.hover<CR>", "go to definition"},
-    ["gD"] = {"<cmd>lua vim.lsp.buf.definition()<CR>", "go to definition"},
-    ["gi"] = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "go to implementation"},
-    ["gr"] = {"<cmd>lua vim.lsp.buf.references()<CR>", "go to references"},
-    ["gds"] = {"<cmd>lua vim.lsp.buf.document_symbol()<CR>", "go to document_symbol"},
-    ["gws"] = {"<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", "go to workspace_symbol"},
+    ["K"] = {function() vim.lsp.buf.hover() end, "go to definition"},
+    ["gD"] = {function() vim.lsp.buf.definition() end, "go to definition"},
+    ["gi"] = {function() vim.lsp.buf.implementation() end, "go to implementation"},
+    ["gr"] = {function() vim.lsp.buf.references() end, "go to references"},
+    ["gds"] = {function() vim.lsp.buf.document_symbol() end, "go to document_symbol"},
+    ["gws"] = {function() vim.lsp.buf.workspace_symbol() end, "go to workspace_symbol"},
     ["gt"] = {"next tab"},
     ["gT"] = {"previous tab"},
+    ["[c"] = { function() vim.diagnostic.goto_prev({ wrap = false }) end, "diagnostic.goto_prev"},
+    ["]c"] = { function() vim.diagnostic.goto_next({ wrap = false }) end, "diagnostic.goto_next"},
 })
 
 
 -- Normal mode, <leader> prefix
 wk.register({
+  ["<leader>"] = {
     -- ignored keys
     ["1"] = "which_key_ignore",
     ["2"] = "which_key_ignore",
@@ -33,6 +38,30 @@ wk.register({
     ["9"] = "which_key_ignore",
 
     ["<cr>"] = {"<cmd>Ttoggle<CR>", "toggle terminal"},
+
+    -- all workspace
+    a = {
+        name = "all workspace",
+        a = {function() vim.diagnostic.setqflist() end, "all workspace diagnostics"},
+        e = {function() vim.diagnostic.setqflist({ severity = "E" }) end, "all workspace errors"},
+        w = {function() vim.diagnostic.setqflist({ severity = "W" }) end, "all workspace warnings"},
+    },
+
+    ["cl"] = {function() vim.lsp.codelens.run() end  ,"codelens" },
+    ["ca"] = {function() vim.lsp.buf.code_action() end  ,"code action" },
+
+    -- nvim-dap
+    d = {
+        -- Example mappings for usage with nvim-dap. If you don't use that, you can skip these.
+        name = "nvim-dap",
+        c = {function() require("dap").continue() end , "continue"},
+        r = {function() require("dap").repl.toggle() end ,"repl toggle"},
+        K = {function() require("dap.ui.widgets").hover() end ,"ui widgets hover"},
+        t = {function() require("dap").toggle_breakpoint() end ,"toogle beakpoint"},
+        so = {function() require("dap").step_over() end ,"step over"},
+        si = {function() require("dap").step_into() end ,"step into"},
+        l = {function() require("dap").run_last() end ,"run last"},
+    },
 
     -- file explorer, 文件浏览器, NvimTree
     e = { ":NvimTreeToggle<CR>", "File Explorer"},
@@ -48,32 +77,33 @@ wk.register({
       name = "+buffer",
       h = {':BufferLineCyclePrev<CR>', "move to previous buffer"},
       l = {':BufferLineCycleNext<CR>', "move to next buffer"},
+      d = {function() vim.diagnostic.setloclist() end, "buffer diagnostics only"},
     },
 
     -- find, 搜索, tegescope
     f = {
         name = "+find",
-        f = {"<cmd>lua t.current_buffer_fuzzy_find()<CR>", "in file"},
+        f = {function() t.current_buffer_fuzzy_find() end, "in file"},
         -- for syntax documentation see https://docs.rs/regex/1.5.4/regex/#syntax
-        d = {"<cmd>lua t.live_grep()<CR>", "in directory"},
-        w = {"<cmd>lua t.grep_string()<CR>", "word"},
-        s = {"<cmd>lua t.lsp_document_symbols()<CR>", "document symbols"},
-        S = {"<cmd>lua t.lsp_workspace_symbols()<CR>", "workspace symbols"},
-        q = {"<cmd>lua t.quickfix()<CR>", "in quickfix list"},
-        h = {"<cmd>lua t.help_tags()<CR>", "in help"},
-        r = {"<cmd>lua t.lsp_references()<CR>", "references"},
-        t = {"<cmd>lua t_ext.todo.todo()<CR>", "todos"},
+        d = {function() t.live_grep() end, "in directory"},
+        w = {function() t.grep_string() end, "word"},
+        s = {function() t.lsp_document_symbols() end, "document symbols"},
+        S = {function() t.lsp_workspace_symbols() end, "workspace symbols"},
+        q = {function() t.quickfix() end, "in quickfix list"},
+        h = {function() t.help_tags() end, "in help"},
+        r = {function() t.lsp_references() end, "references"},
+        t = {function() t_ext.todo.todo() end, "todos"},
     },
 
 
-     -- window
+    -- window
     w = {
         name = "+window",
         h = {"<cmd>vsplit<CR>", "split left"},
         j = {"<cmd>split<bar>wincmd j<CR>", "split down"},
         k = {"<cmd>split<CR>", "split up"},
         l = {"<cmd>vsplit<bar>wincmd l<CR>", "split right"},
-        p = {"<cmd>lua require('nvim-window').pick()<CR>", "pick window"},
+        p = {function() require('nvim-window').pick() end, "pick window"},
         r = {"<cmd>WinResizerStartResize<CR>", "resize mode"},
         e = {"<cmd>wincmd =<CR>", "equalize size"},
         m = { "<cmd>WinShift<CR>", "toggle window move mode"},
@@ -82,21 +112,18 @@ wk.register({
         t = {"<cmd>wincmd T<CR>", "breakout into new tab"},
     },
 
-         -- terminal
+    -- terminal
     t = {
         name = "+terminal",
         c = {"<cmd>T clear<CR>", "clear"},
     },
 
-
-
-
-
-
-
-}, { prefix = "<leader>"})
-
-
+    ["sh"] = {function() vim.lsp.buf.signature_help() end,"signature help"},
+    ["rn"] = {function() vim.lsp.buf.rename() end,"rename"},
+    -- ["mhws"] = {function() require("metals").hover_worksheet() end,""},
+    
+  }
+})
 
 
 -- 保存本地变量
