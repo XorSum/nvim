@@ -97,9 +97,14 @@ wk.register({
     -- Buffer
     b = {
       name = "+buffer",
-      h = {':BufferLineCyclePrev<CR>', "move to previous buffer"},
-      l = {':BufferLineCycleNext<CR>', "move to next buffer"},
-      d = {function() vim.diagnostic.setloclist() end, "buffer diagnostics only"},
+      h = {':BufferLineCyclePrev<CR>', "jump to previous buffer"},
+      l = {':BufferLineCycleNext<CR>', "jump to next buffer"},
+      p = {':BufferLineMovePrev<CR>', "move to previous buffer"},
+      n = {':BufferLineMoveNext<CR>', "move to next buffer"},
+      e = {':BufferLineSortByExtension<CR>', "sort by extension"},
+      d = {':BufferLineSortByDirectory<CR>', "sort by directory"},
+      c = {function() require('bufferline').sort_buffers_by(function (buf_a, buf_b) return buf_a.id < buf_b.id end) end, "sort by id"},
+      s = {function() vim.diagnostic.setloclist() end, "vim.diagnostic.setloclist, buffer diagnostics only"},
     },
 
     -- find, 搜索, tegescope
