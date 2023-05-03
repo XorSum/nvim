@@ -11,6 +11,7 @@ require('telescope').setup{}
 require('plugin-config/which-key')
 require('startify')
 require('plugin-config/nvim-metals')
+require('plugin-config/nvim-lspconfig')
 require('plugin-config/nvim-cmp')
 require('plugin-config/nvim-dap')
 

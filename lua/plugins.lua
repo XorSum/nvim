@@ -49,6 +49,9 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
 
 
+  -- LSP 
+  use {'neovim/nvim-lspconfig'}
+
 
   -- Scala LSP 
 
@@ -75,7 +78,6 @@ return require('packer').startup(function(use)
       "mfussenegger/nvim-dap",
     },
   })
-
 
 
   use 'nvim-tree/nvim-web-devicons'

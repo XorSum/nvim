@@ -98,5 +98,9 @@ https://github.com/fannheyward/coc-rust-analyzer
 
 * [从零开始配置 Neovim](https://martinlwx.github.io/zh-cn/config-neovim-from-scratch/)
 
+* [NeoVim LSP Doc](https://neovim.io/doc/user/lsp.html)
+
+* [LSP list](https://microsoft.github.io/language-server-protocol/implementors/servers/)
+
 
 
