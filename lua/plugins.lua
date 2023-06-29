@@ -33,6 +33,10 @@ return require('packer').startup(function(use)
   -- https://alpha2phi.medium.com/neovim-startup-screen-edd933ec8261
   use 'mhinz/vim-startify'
 
+  -- 语法高亮
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
+
   -- 文件搜索
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -53,7 +57,6 @@ return require('packer').startup(function(use)
   use {'neovim/nvim-lspconfig'}
 
 
-  -- Scala LSP 
 
   use({
     "hrsh7th/nvim-cmp",
@@ -71,15 +74,18 @@ return require('packer').startup(function(use)
     },
   })
 
-  use({
-    "scalameta/nvim-metals",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "mfussenegger/nvim-dap",
-    },
-  })
+  -- Scala LSP 
+  
+  --use({
+  --  "scalameta/nvim-metals",
+  --  requires = {
+  --    "nvim-lua/plenary.nvim",
+  --    "mfussenegger/nvim-dap",
+  --  },
+  --})
 
 
+  -- 图标
   use 'nvim-tree/nvim-web-devicons'
 
 
