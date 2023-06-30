@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
   use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
   -- 配色主题
-  use 'tomasr/molokai'
+--  use 'tomasr/molokai'
   use 'folke/tokyonight.nvim'
 
 
@@ -56,7 +56,12 @@ return require('packer').startup(function(use)
   -- LSP 
   use {'neovim/nvim-lspconfig'}
 
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+  }
 
+  use {  "williamboman/mason-lspconfig.nvim" }
 
   use({
     "hrsh7th/nvim-cmp",

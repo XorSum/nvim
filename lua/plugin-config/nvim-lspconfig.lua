@@ -10,7 +10,16 @@ lspconfig.pyright.setup {}
 
 -- lua
 -- https://github.com/LuaLS/lua-language-server
-lspconfig.lua_ls.setup{}
+lspconfig.lua_ls.setup{
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+  },
+}
 
 -- bash
 -- https://github.com/bash-lsp/bash-language-server
