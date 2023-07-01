@@ -12,19 +12,19 @@ return require('packer').startup(function(use)
 
   -- Lazy loading:
   -- Load on specific commands
-  use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+  use { 'tpope/vim-dispatch', opt = true, cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } }
 
-  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+  use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
   -- 配色主题
---  use 'tomasr/molokai'
+  --  use 'tomasr/molokai'
   use 'folke/tokyonight.nvim'
 
 
   -- 在两个大括号之间加上竖着的线
   use 'Yggdroot/indentLine'
   -- 括号补全
---  use 'jiangmiao/auto-pairs' 
+  --  use 'jiangmiao/auto-pairs'
 
 
   use "nvim-lua/plenary.nvim"
@@ -34,34 +34,45 @@ return require('packer').startup(function(use)
   use 'mhinz/vim-startify'
 
   -- 语法高亮
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
 
   -- 文件搜索
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-  -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim', tag = '0.1.2',
+    -- or                            , branch = '0.1.x',
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
+
+  use { 'stevearc/dressing.nvim' }
 
   -- 底部的状态栏
   use 'nvim-lualine/lualine.nvim'
 
   -- 快捷键管理
-  use {"folke/which-key.nvim"}
+  use { "folke/which-key.nvim" }
 
   use 'nvim-tree/nvim-tree.lua'
 
 
-  -- LSP 
-  use {'neovim/nvim-lspconfig'}
+  -- LSP
 
   use {
     "williamboman/mason.nvim",
-    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+    run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    requires = { "hrsh7th/nvim-cmp" },
   }
 
-  use {  "williamboman/mason-lspconfig.nvim" }
+  use { 'neovim/nvim-lspconfig' }
+
+  use { "williamboman/mason-lspconfig.nvim" }
+
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
 
   use({
     "hrsh7th/nvim-cmp",
@@ -70,7 +81,6 @@ return require('packer').startup(function(use)
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },
-      { 'hrsh7th/nvim-cmp' },
       { "hrsh7th/cmp-vsnip" },
       { "hrsh7th/vim-vsnip" },
       -- " For snippy users.
@@ -79,8 +89,8 @@ return require('packer').startup(function(use)
     },
   })
 
-  -- Scala LSP 
-  
+  -- Scala LSP
+
   --use({
   --  "scalameta/nvim-metals",
   --  requires = {
@@ -107,11 +117,11 @@ return require('packer').startup(function(use)
   --}
 
   -- Plugins can have dependencies on other plugins
-  --use {
+  -- use {
   --  'haorenW1025/completion-nvim',
   --  opt = true,
   --  requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
-  --}
+  -- }
 
   -- Plugins can also depend on rocks from luarocks.org:
   --use {
@@ -153,5 +163,3 @@ return require('packer').startup(function(use)
   -- You can alias plugin names
   --use {'dracula/vim', as = 'dracula'}
 end)
-
-
