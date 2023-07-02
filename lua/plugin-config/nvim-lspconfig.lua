@@ -1,12 +1,17 @@
+
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua_ls", "python-lsp-server", "bash-language-server",   },
+}
+
+
 -- Setup language servers.
 -- https://github.com/neovim/nvim-lspconfig
 -- https://microsoft.github.io/language-server-protocol/implementors/servers/
 local lspconfig = require('lspconfig')
 
 -- python
--- https://github.com/microsoft/pyright
--- npm install -g pyright
-lspconfig.pyright.setup {}
+-- lspconfig.pyright.setup{}
+lspconfig.pylsp.setup{}
 
 -- lua
 -- https://github.com/LuaLS/lua-language-server

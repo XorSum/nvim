@@ -84,8 +84,8 @@ return require('packer').startup(function(use)
       { "hrsh7th/cmp-vsnip" },
       { "hrsh7th/vim-vsnip" },
       -- " For snippy users.
-      { 'dcampos/nvim-snippy' },
-      { 'dcampos/cmp-snippy' },
+      -- { 'dcampos/nvim-snippy' },
+      -- { 'dcampos/cmp-snippy' },
     },
   })
 
